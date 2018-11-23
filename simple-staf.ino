@@ -1,4 +1,6 @@
- #include <Adafruit_NeoPixel.h>
+//Этот скетч предназначен для работы на Arduino atmega32u4
+
+#include <Adafruit_NeoPixel.h>
 #include <Bounce2.h> //Библиотека для работы с кнопками
 #include <EEPROM.h> //Библиотека для работы с ППЗУ
 
@@ -66,8 +68,8 @@ byte SweetSymbol2 [12][12] = {
 void setup() {
 
   pinMode(2 , INPUT); // кнопка на пине 2
-  digitalWrite(2 , HIGH); // подключаем встроенный подтягивающий резистор
-  bouncer .attach(2); // устанавливаем кнопку
+  digitalWrite(2 , HIGH); // подключаем встроенный подтягивающий резистор. Нужно чтобы избежать дребезга кнопки. 
+  bouncer .attach(2); // устанавливаем кнопкуна соответствующем пине.
   bouncer .interval(5); // устанавливаем параметр stable interval = 5 мс
   // Serial.begin(9600); //установка Serial-порта на скорость 9600 бит/сек
   current_mode = EEPROM.read(0); //Забераем режи работы ленты из ППЗУ который храним по адресу - 0
